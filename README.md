@@ -117,3 +117,12 @@
 }
 ```
 ![image](https://github.com/user-attachments/assets/2bdfbe9c-f64b-4245-ba7f-2967445c54b1)
+## Deloy on server 
+![image](https://github.com/user-attachments/assets/cb1ffdf2-4e03-4bfa-8131-6808507b35af)
+
+![image](https://github.com/user-attachments/assets/739046f2-653a-40fe-a21a-221647adc894)
+
+![image](https://github.com/user-attachments/assets/21db6681-c4e8-46f0-be7f-8e1d2b6037d0)
+
+
+
