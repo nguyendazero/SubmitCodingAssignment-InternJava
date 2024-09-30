@@ -26,36 +26,37 @@ public class ProductController {
 
 	@GetMapping("")
 	public ResponseEntity<APICustomize<List<ProductResponse>>> products(
-			@RequestParam(required = false) Long sizeId,
-			@RequestParam(required = false) Double minPrice,
-			@RequestParam(required = false) Double maxPrice,
-			@RequestParam(required = false) Long colorId,
-			@RequestParam(required = false) Long styleId,
-			@RequestParam(required = false) Long categoryId,
-			@RequestParam(required = false) String sortBy,
-			@RequestParam(required = false) String sortOrder,
-			@RequestParam(defaultValue = "0") int page,
-			@RequestParam(defaultValue = "10") int size) {
-
+	        @RequestParam(required = false) Long sizeId,
+	        @RequestParam(required = false) Double minPrice,
+	        @RequestParam(required = false) Double maxPrice,
+	        @RequestParam(required = false) Long colorId,
+	        @RequestParam(required = false) Long styleId, 
+	        @RequestParam(required = false) Long categoryId, 
+	        @RequestParam(required = false) String sortBy,
+	        @RequestParam(required = false) String sortOrder,
+	        @RequestParam(defaultValue = "0") int page, 
+	        @RequestParam(defaultValue = "10") int size) { 
+		
 		HttpHeaders headers = new HttpHeaders();
-
-		APICustomize<List<ProductResponse>> response = productService.products(sizeId, minPrice, maxPrice, colorId,
-				styleId, categoryId, sortBy, sortOrder, page, size);
-		if (response.getResult().isEmpty()) {
-			return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
-		}
-
-		return new ResponseEntity<>(response, headers, HttpStatus.OK);
+		
+		//Tạo ra list products để trả về theo các tham số truyền vào
+	    APICustomize<List<ProductResponse>> response = productService.products(sizeId, minPrice, maxPrice, colorId, styleId, categoryId, sortBy, sortOrder, page, size);
+	    if(response.getResult().isEmpty()) {
+	    	//Nếu list trống thì trả về not found
+	    	return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+	    }
+	    
+	    return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
-
+	
 	@GetMapping("/{id}")
-	public ResponseEntity<APICustomize<ProductDetailResponse>> product(@PathVariable long id) {
-		APICustomize<ProductDetailResponse> response = productService.product(id);
-
-		HttpHeaders headers = new HttpHeaders();
-		if (response.getResult() == null) {
-			return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<>(response, headers, HttpStatus.OK);
-	}
+    public ResponseEntity<APICustomize<ProductDetailResponse>> product(@PathVariable long id) {
+        APICustomize<ProductDetailResponse> response = productService.product(id);
+        
+        HttpHeaders headers = new HttpHeaders();
+        if(response.getResult() == null) {
+	    	return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+	    }
+        return new ResponseEntity<>(response, headers, HttpStatus.OK);
+    }
 }

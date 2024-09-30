@@ -6,8 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class APICustomize<T> {
-    private  String message = "success";
-    private T result ;
-    
+    private int statusCode;
+    private String message;
+    private T result;
 }
-

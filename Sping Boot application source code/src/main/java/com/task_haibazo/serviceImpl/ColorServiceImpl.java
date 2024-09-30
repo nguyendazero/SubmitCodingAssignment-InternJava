@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.task_haibazo.dto.response.APICustomize;
@@ -13,20 +14,22 @@ import com.task_haibazo.repository.ColorRepository;
 import com.task_haibazo.service.ColorService;
 
 @Service
-public class ColorServiceImpl implements ColorService{
-	
+public class ColorServiceImpl implements ColorService {
+
 	@Autowired
 	private ColorRepository colorRepository;
 
 	@Override
 	public APICustomize<List<ColorResponse>> colors() {
-	    List<Color> colors = colorRepository.findAll();
-	    List<ColorResponse> colorResponseList = colors.stream()
-	            .map(color -> new ColorResponse(color.getId(), color.getColorName())) 
-	            .collect(Collectors.toList());
+		List<Color> colors = colorRepository.findAll();
+		List<ColorResponse> colorResponseList = colors.stream()
+				.map(color -> new ColorResponse(color.getId(), color.getColorName()))
+				.collect(Collectors.toList());
 
-	    String message = colors.isEmpty() ? "No colors found!" : "All colors retrieved successfully!";
+		String message = colors.isEmpty() ? "No colors found!" : "All colors retrieved successfully!";
+		int statusCode = colors.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
 
-	    return new APICustomize<>(message, colorResponseList);
+		// Tạo API chuẩn với statuCode, message, result
+		return new APICustomize<>(statusCode, message, colorResponseList);
 	}
 }
