@@ -54,12 +54,13 @@
 - Get product by id
 ![image](https://github.com/user-attachments/assets/2bdfbe9c-f64b-4245-ba7f-2967445c54b1)
 ```
-  {
+{
+    "statusCode": 200,
     "message": "Product detail retrieved successfully!",
     "result": {
         "id": 10,
         "description": "The Stradivarius Wool Look Jacket in Burgundy features a stylish design with a warm, rich color, perfect for adding elegance to any outfit. Ideal for layering in cooler weather.",
-        "totalView": 0,
+        "totalView": 720,
         "productName": "Stradivarius wool look jacket in burgundy",
         "price": 70.0,
         "discount": 0.0,
