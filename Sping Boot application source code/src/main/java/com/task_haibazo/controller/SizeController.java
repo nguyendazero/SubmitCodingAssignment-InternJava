@@ -20,17 +20,15 @@ public class SizeController {
 
 	@Autowired
 	private SizeService sizeService;
-	
+
 	@GetMapping("/")
 	public ResponseEntity<APICustomize<List<SizeResponse>>> sizes() {
-	    APICustomize<List<SizeResponse>> response = sizeService.sizes();
-	    HttpHeaders headers = new HttpHeaders();
-	    if(response.getResult().isEmpty()) {
-        	return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
-        }
-
-	    return new ResponseEntity<>(response, headers, HttpStatus.OK);
+		APICustomize<List<SizeResponse>> response = sizeService.sizes();
+		HttpHeaders headers = new HttpHeaders();
+		if (response.getResult().isEmpty()) {
+			return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 
-	
 }

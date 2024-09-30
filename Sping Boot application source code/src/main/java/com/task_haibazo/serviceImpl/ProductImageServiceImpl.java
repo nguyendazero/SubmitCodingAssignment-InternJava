@@ -29,7 +29,6 @@ public class ProductImageServiceImpl implements ProductImageService {
         String message = productImages.isEmpty() ? "No product images found!"
                 : "Product images retrieved successfully!";
         int statusCode = productImages.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-
         // Tạo API chuẩn với statuCode, message, result
         return new APICustomize<>(statusCode, message, productImageResponseList);
     }

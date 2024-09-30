@@ -28,7 +28,6 @@ public class SizeServiceImpl implements SizeService {
 
 		String message = sizes.isEmpty() ? "No sizes found!" : "All sizes retrieved successfully!";
 		int statusCode = sizes.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-
 		// Tạo API chuẩn với statuCode, message, result
 		return new APICustomize<>(statusCode, message, sizeResponseList);
 	}

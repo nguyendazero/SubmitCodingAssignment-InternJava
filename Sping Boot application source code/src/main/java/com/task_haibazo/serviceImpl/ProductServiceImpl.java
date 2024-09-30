@@ -39,7 +39,6 @@ public class ProductServiceImpl implements ProductService {
             Long styleId, Long categoryId, String sortBy, String sortOrder, int page, int size) {
         List<Product> products = productRepository.findProducts(sizeId, minPrice, maxPrice, colorId, styleId,
                 categoryId, sortBy, sortOrder);
-
         // Tính toán xử lý phân trang
         int start = page * size;
         int end = Math.min(start + size, products.size());
@@ -62,7 +61,6 @@ public class ProductServiceImpl implements ProductService {
 
         String message = products.isEmpty() ? "No products found!" : "Products retrieved successfully!";
         int statusCode = products.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-
         // Tạo API chuẩn với statuCode, message, result
         return new APICustomize<>(statusCode, message, productResponses);
     }
@@ -71,10 +69,8 @@ public class ProductServiceImpl implements ProductService {
     public APICustomize<ProductDetailResponse> product(long id) {
 
         Optional<Product> productOpt = productRepository.findById(id);
-
         if (productOpt.isPresent()) {
             Product product = productOpt.get();
-
             List<SizeResponse> sizes = sizeService.sizes().getResult();
             List<ColorResponse> colors = colorService.colors().getResult();
             List<ProductImageResponse> productImages = productImageService.productImagesByProductId(product.getId())
@@ -93,7 +89,6 @@ public class ProductServiceImpl implements ProductService {
                     sizes,
                     colors,
                     productImages);
-
             // Tạo API chuẩn với statuCode, message, result khi product hợp lệ
             return new APICustomize<>(HttpStatus.OK.value(), "Product detail retrieved successfully!", productDetail);
         } else {

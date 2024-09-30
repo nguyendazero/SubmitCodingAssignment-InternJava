@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CategoryResponse {
-    private long id ;
-    private String categoryName ;
+    private long id;
+    private String categoryName;
 }

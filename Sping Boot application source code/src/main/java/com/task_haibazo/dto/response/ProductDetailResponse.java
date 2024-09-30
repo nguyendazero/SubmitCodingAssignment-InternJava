@@ -16,9 +16,9 @@ public class ProductDetailResponse {
     private double price;
     private double discount;
     private String image;
-    private Date saleEndDate; 
+    private Date saleEndDate;
     private double averageStars;
-    private List<SizeResponse> sizes;  
-    private List<ColorResponse> colors; 
+    private List<SizeResponse> sizes;
+    private List<ColorResponse> colors;
     private List<ProductImageResponse> productImages;
 }

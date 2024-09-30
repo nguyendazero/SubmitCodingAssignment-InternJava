@@ -14,24 +14,21 @@ import com.task_haibazo.dto.response.APICustomize;
 import com.task_haibazo.dto.response.ColorResponse;
 import com.task_haibazo.service.ColorService;
 
-
 @RestController
 @RequestMapping("/api/v1/colors")
 public class ColorController {
 
 	@Autowired
 	private ColorService colorService;
-	
+
 	@GetMapping("/")
 	public ResponseEntity<APICustomize<List<ColorResponse>>> colors() {
-	    APICustomize<List<ColorResponse>> response = colorService.colors();
-	    HttpHeaders headers = new HttpHeaders();
-	    if(response.getResult().isEmpty()) {
-        	return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
-        }
-
-	    return new ResponseEntity<>(response, headers, HttpStatus.OK);
+		APICustomize<List<ColorResponse>> response = colorService.colors();
+		HttpHeaders headers = new HttpHeaders();
+		if (response.getResult().isEmpty()) {
+			return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 
-	
 }

@@ -30,7 +30,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 		String message = categories.isEmpty() ? "No categories found!" : "All categories retrieved successfully!";
 		int statusCode = categories.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-
 		// Tạo API chuẩn với statuCode, message, result
 		return new APICustomize<>(statusCode, message, categoryResponseList);
 	}

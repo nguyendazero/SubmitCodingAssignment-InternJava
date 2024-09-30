@@ -28,7 +28,6 @@ public class StyleServiceImpl implements StyleService {
 
         String message = styles.isEmpty() ? "No styles found!" : "All styles retrieved successfully!";
         int statusCode = styles.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-
         // Tạo API chuẩn với statuCode, message, result
         return new APICustomize<>(statusCode, message, styleResponseList);
     }

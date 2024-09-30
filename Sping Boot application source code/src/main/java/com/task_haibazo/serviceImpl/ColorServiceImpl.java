@@ -28,7 +28,6 @@ public class ColorServiceImpl implements ColorService {
 
 		String message = colors.isEmpty() ? "No colors found!" : "All colors retrieved successfully!";
 		int statusCode = colors.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-
 		// Tạo API chuẩn với statuCode, message, result
 		return new APICustomize<>(statusCode, message, colorResponseList);
 	}
