@@ -7,7 +7,7 @@
 ```
  /api/v1/categories/
 ```
-- Get all categories
+- Get categories
 ![image](https://github.com/user-attachments/assets/da65260f-f2f0-46e6-8d5b-cad4705e9232)
 ![image](https://github.com/user-attachments/assets/f26799e7-3856-4d99-8ddb-aaf8ad0c6517)
 
@@ -15,7 +15,7 @@
 ```
  /api/v1/styles/
 ```
-- Get all styles
+- Get styles
 ![image](https://github.com/user-attachments/assets/5c4bc99d-0261-45b8-ad6c-e5c697f431a7)
 ![image](https://github.com/user-attachments/assets/e1c61440-6bff-4986-a168-d1b5025a54ca)
 
@@ -24,7 +24,7 @@
 ```
  /api/v1/sizes/
 ```
-- Get all sizes
+- Get sizes
 ![image](https://github.com/user-attachments/assets/6dd944a7-51d0-44a4-8402-de46f34356df)
 ![image](https://github.com/user-attachments/assets/12d9abfa-fb55-48a7-b47c-a52f10fbd06b)
 
@@ -32,7 +32,7 @@
 ```
  /api/v1/colors/
 ```
-- Get all colors
+- Get colors
 ![image](https://github.com/user-attachments/assets/eddeb821-eb8b-4165-9525-de0f267d2b68)
 ![image](https://github.com/user-attachments/assets/777fc944-1ff2-4358-9cd5-352ae9c9b2a3)
 
@@ -51,7 +51,7 @@
 ```
 /api/v1/products/{id}
 ```
-- Get product by Id
+- Get product by id
 ![image](https://github.com/user-attachments/assets/2bdfbe9c-f64b-4245-ba7f-2967445c54b1)
 ```
   {
