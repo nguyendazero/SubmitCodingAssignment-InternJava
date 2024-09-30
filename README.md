@@ -31,10 +31,10 @@
 - Get all colors
 ![image](https://github.com/user-attachments/assets/63361785-556a-43bf-af7a-4da0f4f19a53)
 
--Get products
+- Get products
 ![image](https://github.com/user-attachments/assets/8ee963eb-030d-4324-a809-57ca885b83c4)
 
--Get product by parameter(sizeId, colorId, minPrice, maxPrice, categoryId, styleId, sortBy, sortOrder, page, size) Optional
+- Get product by parameter(sizeId, colorId, minPrice, maxPrice, categoryId, styleId, sortBy, sortOrder, page, size) Optional
 ![image](https://github.com/user-attachments/assets/027db09d-4139-409a-95ac-58fb454a8c35)
 
 ```
