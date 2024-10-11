@@ -16,17 +16,17 @@ import com.task_haibazo.service.CategoryService;
 @RestController
 @RequestMapping("/api/v1/categories")
 public class CategoryController {
-
-    @Autowired
-    private CategoryService categoryService;
-
-    @GetMapping("/")
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@GetMapping("/")
     public ResponseEntity<APICustomize<List<CategoryResponse>>> categories() {
         APICustomize<List<CategoryResponse>> response = categoryService.categories();
         HttpHeaders headers = new HttpHeaders();
 
-        if (response.getResult().isEmpty()) {
-            return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+        if(response.getResult().isEmpty()) {
+        	return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(response, headers, HttpStatus.OK);
     }

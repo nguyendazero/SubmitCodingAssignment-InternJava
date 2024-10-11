@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CategoryResponse {
-    private long id ;
-    private String categoryName ;
+public class ErrorResponse {
+
+	 private String message; 
+	 private String details; 
+	
 }

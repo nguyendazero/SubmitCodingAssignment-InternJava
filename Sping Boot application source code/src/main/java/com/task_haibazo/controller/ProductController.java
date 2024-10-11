@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.task_haibazo.dto.response.APICustomize;
 import com.task_haibazo.dto.response.ProductDetailResponse;
 import com.task_haibazo.dto.response.ProductResponse;
+import com.task_haibazo.exception.ErrorCode;
+import com.task_haibazo.exception.ProductNotFound;
+
 import java.util.List;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,25 +41,24 @@ public class ProductController {
 			@RequestParam(defaultValue = "10") int size) {
 
 		HttpHeaders headers = new HttpHeaders();
-		// Tạo ra list products để trả về theo các tham số truyền vào
 		APICustomize<List<ProductResponse>> response = productService.products(sizeId, minPrice, maxPrice, colorId,
 				styleId, categoryId, sortBy, sortOrder, page, size);
 		if (response.getResult().isEmpty()) {
-			// Nếu list trống thì trả về not found
-			return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+			throw new ProductNotFound(ErrorCode.PRODUCT_NOT_FOUND);
 		}
 		return new ResponseEntity<>(response, headers, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<APICustomize<ProductDetailResponse>> product(@PathVariable long id) {
+	public ResponseEntity<APICustomize<ProductDetailResponse>> getProductById(@PathVariable long id) {
 
-		HttpHeaders headers = new HttpHeaders();
+        APICustomize<ProductDetailResponse> response = productService.product(id);
 
-		APICustomize<ProductDetailResponse> response = productService.product(id);
-		if (response.getResult() == null) {
-			return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<>(response, headers, HttpStatus.OK);
-	}
+        if (response.getResult() == null) {
+            throw new ProductNotFound(ErrorCode.PRODUCT_NOT_FOUND);
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        return ResponseEntity.ok().headers(headers).body(response);
+    }
 }

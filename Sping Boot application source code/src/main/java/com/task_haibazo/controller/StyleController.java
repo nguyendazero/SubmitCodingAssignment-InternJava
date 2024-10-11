@@ -15,16 +15,15 @@ import com.task_haibazo.dto.response.StyleResponse;
 @RestController
 @RequestMapping("/api/v1/styles")
 public class StyleController {
-
-    @Autowired
+	@Autowired
     private StyleService styleService;
 
     @GetMapping("/")
     public ResponseEntity<APICustomize<List<StyleResponse>>> styles() {
         APICustomize<List<StyleResponse>> response = styleService.styles();
         HttpHeaders headers = new HttpHeaders();
-        if (response.getResult().isEmpty()) {
-            return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
+        if(response.getResult().isEmpty()) {
+        	return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(response, headers, HttpStatus.OK);
     }

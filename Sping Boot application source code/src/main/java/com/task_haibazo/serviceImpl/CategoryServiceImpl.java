@@ -16,21 +16,22 @@ import com.task_haibazo.repository.CategoryRepository;
 import com.task_haibazo.service.CategoryService;
 
 @Service
-public class CategoryServiceImpl implements CategoryService {
+public class CategoryServiceImpl implements CategoryService{
 
 	@Autowired
 	private CategoryRepository categoryRepository;
 
 	@Override
 	public APICustomize<List<CategoryResponse>> categories() {
-		List<Category> categories = categoryRepository.findAll();
-		List<CategoryResponse> categoryResponseList = categories.stream()
-				.map(category -> new CategoryResponse(category.getId(), category.getCategorName()))
-				.collect(Collectors.toList());
+	    List<Category> categories = categoryRepository.findAll();
+	    List<CategoryResponse> categoryResponseList = categories.stream()
+	            .map(category -> new CategoryResponse(category.getId(), category.getCategorName()))
+	            .collect(Collectors.toList());
 
-		String message = categories.isEmpty() ? "No categories found!" : "All categories retrieved successfully!";
-		int statusCode = categories.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
-		// Tạo API chuẩn với statuCode, message, result
-		return new APICustomize<>(statusCode, message, categoryResponseList);
+	    String message = categories.isEmpty() ? "No categories found!" : "All categories retrieved successfully!";
+	    int statusCode = categories.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
+	    
+	    // Tạo API chuẩn với statuCode, message, result
+	    return new APICustomize<>(statusCode, message, categoryResponseList);
 	}
 }

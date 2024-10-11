@@ -14,21 +14,21 @@ import com.task_haibazo.repository.ProductImageRepository;
 import com.task_haibazo.service.ProductImageService;
 
 @Service
-public class ProductImageServiceImpl implements ProductImageService {
+public class ProductImageServiceImpl implements ProductImageService{
 
-    @Autowired
+	@Autowired
     private ProductImageRepository productImageRepository;
 
-    @Override
+	@Override
     public APICustomize<List<ProductImageResponse>> productImagesByProductId(long productId) {
         List<ProductImage> productImages = productImageRepository.findByProductId(productId);
         List<ProductImageResponse> productImageResponseList = productImages.stream()
                 .map(image -> new ProductImageResponse(image.getId(), image.getImageUrl()))
                 .collect(Collectors.toList());
 
-        String message = productImages.isEmpty() ? "No product images found!"
-                : "Product images retrieved successfully!";
+        String message = productImages.isEmpty() ? "No product images found!" : "Product images retrieved successfully!";
         int statusCode = productImages.isEmpty() ? HttpStatus.NOT_FOUND.value() : HttpStatus.OK.value();
+        
         // Tạo API chuẩn với statuCode, message, result
         return new APICustomize<>(statusCode, message, productImageResponseList);
     }
